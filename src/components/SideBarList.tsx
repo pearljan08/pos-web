@@ -18,40 +18,24 @@ const SideBarList = () => {
         },
         {
             id: 2,
-            title: "My Courses",
-            icon: <iconSolid.BookOpenIcon />
+            title: "Inventory",
+            icon: <iconSolid.ArchiveBoxIcon />
         },
         {
             id: 3,
-            title: "Lessons",
-            icon: <iconSolid.FilmIcon />
+            title: "Users",
+            icon: <iconSolid.UserGroupIcon />
         },
         {
             id: 4,
-            title: "Assignments",
-            icon: <iconSolid.ClipboardDocumentListIcon />
+            title: "Transactions",
+            icon: <iconSolid.ChartPieIcon />
         },
         {
             id: 5,
-            title: "Progress & Grades",
-            icon: <iconSolid.ChartBarSquareIcon />
-        },
-        {
-            id: 6,
-            title: "Quizzes & Exams",
-            icon: <iconSolid.PuzzlePieceIcon />
-        },
-        {
-            id: 7,
-            title: "Discussions",
-            icon: <iconSolid.ChatBubbleBottomCenterTextIcon />
-        },
-        {
-            id: 8,
-            title: "Calendar & Deadlines",
-            icon: <iconSolid.CalendarDaysIcon />
+            title: "Reports & Analytics",
+            icon: <iconSolid.DocumentChartBarIcon />
         }
-        
     ];
 
   return (
@@ -69,22 +53,7 @@ const SideBarList = () => {
             }
             <ListItem>
                 <ListItemPrefix>
-                    <iconSolid.BellIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                Notifications
-                <ListItemSuffix>
-                    <Chip value="14" size="sm" variant="ghost" className="rounded-full dark:bg-gray-300" />
-                </ListItemSuffix>
-            </ListItem>
-            <ListItem>
-                <ListItemPrefix>
-                    <iconSolid.UserCircleIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                Profile
-            </ListItem>
-            <ListItem>
-                <ListItemPrefix>
-                    <iconSolid.Cog6ToothIcon className="h-5 w-5" />
+                    <iconSolid.CogIcon className="h-5 w-5" />
                 </ListItemPrefix>
                 Settings
             </ListItem>

@@ -14,7 +14,7 @@ const AppRoutes = () => {
           <Route path="password" element={<SetPassword />} />
         </Route>
         <Route path="/admin" >
-            <Route path="dashboard" element={<Dashboard/>} />
+            <Route index element={<Dashboard/>} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -13,12 +13,12 @@ const SideNav = () => {
     const [openAlert, setOpenAlert] = useState(true);
 
     return (
-        <div className="dark: bg-blue-gray-800">
+        <div className="dark: bg-blue-gray-800 fixed z-10">
             <Card className="min-h-screen w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 rounded-none bg-gray-100 dark:bg-gray-800">
                 <div className="mb-2 flex items-center gap-4 p-4">
-                    <img src="../school.png" alt="brand" className="h-16 w-16 dark:bg-gray-100 rounded-full object-cover object-center" />
+                    <img src="../logo.png" alt="brand" className="h-16 w-16 dark:bg-gray-100 rounded-full object-cover object-center" />
                     <p className="text-xl dark:text-gray-200">
-                        University of Chuchu
+                        ePOS
                     </p>
                 </div>
                 <div className="p-2">
