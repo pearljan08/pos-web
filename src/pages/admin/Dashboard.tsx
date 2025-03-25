@@ -1,14 +1,26 @@
 import { ArrowTrendingUpIcon, BanknotesIcon, BellIcon, ComputerDesktopIcon, WalletIcon } from '@heroicons/react/24/outline'
 import LineChart from '../../components/LineChart'
 import SideNav from '../../components/SideNav'
-import { Button, Card, CardBody, CardHeader, Typography } from '@material-tailwind/react'
+import { Button, Card, CardBody, CardHeader, Select, Typography, Option } from '@material-tailwind/react'
 import { Table } from '../../components/Table'
+import { formatPeso } from '../../lib/format'
+import BarChart from '../../components/BarChart'
 
+const totalSales = 9998.72;
 
 const Dashboard = () => {
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen">
       <SideNav/>
+      <div className="flex flex-col items-end p-5">
+        <div className=''>
+          <Select label="Date Filter">
+            <Option>Days</Option>
+            <Option>Months</Option>
+            <Option>Years</Option>
+          </Select>
+        </div>
+      </div>
       <div className='grid grid-cols-6'>
         <div></div>
         <div className='col-span-5'>
@@ -43,7 +55,7 @@ const Dashboard = () => {
                   <BanknotesIcon className="h-15 w-15"/>
                 </CardHeader>
                 <CardBody>
-                  <p className="text-5xl md:text-5xl sm:text-3xl font-bold">P8,000</p>
+                  <p className="text-5xl md:text-5xl sm:text-3xl font-bold">{formatPeso.format(totalSales)}</p>
                   <p className="text-xl font-medium">Total Revenue</p>
                   <p className='text-sm font-light'>Click to view</p>
                 </CardBody>
@@ -77,6 +89,23 @@ const Dashboard = () => {
             </div>
             <div className="m-5 mt-0">
               <Table/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-6">
+        <div>
+          
+        </div>
+        <div className="col-span-5">
+          <div className="grid grid-cols-5">
+            <div className="col-span-3">
+              <section className="m-5 mt-0">
+                <Table />
+              </section>
+            </div>
+            <div className="m-5 mt-0 col-span-2">
+              <BarChart/>
             </div>
           </div>
         </div>

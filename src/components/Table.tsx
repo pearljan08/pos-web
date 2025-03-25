@@ -19,6 +19,8 @@ import {
   IconButton,
   Tooltip,
 } from "@material-tailwind/react";
+import Terminal from "../pages/pos/Terminal";
+import { formatPeso } from "../lib/format";
  
 const TABS = [
   {
@@ -35,61 +37,57 @@ const TABS = [
   },
 ];
  
-const TABLE_HEAD = ["Member", "Function", "Status", "Employed", ""];
+const TABLE_HEAD = ["Cashier", "Terminal", "Total Sales"];
  
 const TABLE_ROWS = [
   {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg",
     name: "John Michael",
-    email: "john@creative-tim.com",
-    job: "Manager",
+    terminal: 1,
+    sales: 2000,
     org: "Organization",
     online: true,
     date: "23/04/18",
   },
   {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg",
     name: "Alexa Liras",
-    email: "alexa@creative-tim.com",
-    job: "Programator",
+    terminal: 2,
+    sales: 8673,
     org: "Developer",
     online: false,
     date: "23/04/18",
   },
   {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg",
     name: "Laurent Perrier",
-    email: "laurent@creative-tim.com",
-    job: "Executive",
+    terminal: 3,
+    sales: 9027,
     org: "Projects",
     online: false,
     date: "19/09/17",
   },
   {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg",
     name: "Michael Levi",
-    email: "michael@creative-tim.com",
-    job: "Programator",
+    terminal: 4,
+    sales: 2319,
     org: "Developer",
     online: true,
     date: "24/12/08",
   },
   {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg",
     name: "Richard Gran",
-    email: "richard@creative-tim.com",
-    job: "Manager",
+    terminal: 5,
+    sales: 809,
     org: "Executive",
     online: false,
     date: "04/10/21",
   },
 ];
+  
  
 export function Table() {
   return (
     <Card className="h-full w-full">
-      <CardHeader floated={false} shadow={false} className="rounded-none">
-        {/* <div className="mb-8 flex items-center justify-between gap-8">
+      {/* <CardHeader floated={false} shadow={false} className="rounded-none">
+        <div className="mb-8 flex items-center justify-between gap-8">
           <div>
             <Typography variant="h5" color="blue-gray">
               Members list
@@ -106,7 +104,7 @@ export function Table() {
               <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add member
             </Button>
           </div>
-        </div> */}
+        </div>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <Tabs value="all" className="w-full md:w-max">
             <TabsHeader>
@@ -124,9 +122,9 @@ export function Table() {
             />
           </div>
         </div>
-      </CardHeader>
+      </CardHeader> */}
       <CardBody className="overflow-scroll px-0">
-        <table className="mt-4 w-full min-w-max table-auto text-left">
+        <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
               {TABLE_HEAD.map((head, index) => (
@@ -150,7 +148,7 @@ export function Table() {
           </thead>
           <tbody>
             {TABLE_ROWS.map(
-              ({ img, name, email, job, org, online, date }, index) => {
+              ({ name, terminal, sales }, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
                   ? "p-4"
@@ -160,7 +158,7 @@ export function Table() {
                   <tr key={name}>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
-                        <Avatar src={img} alt={name} size="sm" />
+                        {/* <Avatar src={img} alt={name} size="sm" /> */}
                         <div className="flex flex-col">
                           <Typography
                             variant="small"
@@ -168,13 +166,6 @@ export function Table() {
                             className="font-normal"
                           >
                             {name}
-                          </Typography>
-                          <Typography
-                            variant="small"
-                            color="blue-gray"
-                            className="font-normal opacity-70"
-                          >
-                            {email}
                           </Typography>
                         </div>
                       </div>
@@ -186,42 +177,14 @@ export function Table() {
                           color="blue-gray"
                           className="font-normal"
                         >
-                          {job}
-                        </Typography>
-                        <Typography
-                          variant="small"
-                          color="blue-gray"
-                          className="font-normal opacity-70"
-                        >
-                          {org}
+                          {terminal}
                         </Typography>
                       </div>
                     </td>
                     <td className={classes}>
                       <div className="w-max">
-                        <Chip
-                          variant="ghost"
-                          size="sm"
-                          value={online ? "online" : "offline"}
-                          color={online ? "green" : "blue-gray"}
-                        />
+                        <p className="text-xl">{formatPeso.format(sales)}</p>
                       </div>
-                    </td>
-                    <td className={classes}>
-                      <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="font-normal"
-                      >
-                        {date}
-                      </Typography>
-                    </td>
-                    <td className={classes}>
-                      <Tooltip content="Edit User">
-                        <IconButton variant="text">
-                          <PencilIcon className="h-4 w-4" />
-                        </IconButton>
-                      </Tooltip>
                     </td>
                   </tr>
                 );

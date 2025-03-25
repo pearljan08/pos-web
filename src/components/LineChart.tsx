@@ -11,6 +11,7 @@ import {
 
 // deepmerge
 import merge from "deepmerge";
+import { formatPeso } from "../lib/format";
 
 // line chart
 interface ChartsPropsType {
@@ -127,6 +128,7 @@ function AreaChart({
   );
 }
 
+const totalSales = 190807.02;
 export function LineChart() {
   return (
     <section>
@@ -134,7 +136,7 @@ export function LineChart() {
         <CardBody className="!p-2">
           <div className="flex gap-2 flex-wrap justify-between px-4 !mt-4 ">
             <Typography variant="h3" color="blue-gray">
-              $127,092.22
+              {formatPeso.format(totalSales)}
             </Typography>
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-1">
