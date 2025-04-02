@@ -21,69 +21,11 @@ import {
 } from "@material-tailwind/react";
 import Terminal from "../pages/pos/Terminal";
 import { formatPeso } from "../lib/format";
- 
-const TABS = [
-  {
-    label: "All",
-    value: "all",
-  },
-  {
-    label: "Monitored",
-    value: "monitored",
-  },
-  {
-    label: "Unmonitored",
-    value: "unmonitored",
-  },
-];
- 
-const TABLE_HEAD = ["Cashier", "Terminal", "Total Sales"];
- 
-const TABLE_ROWS = [
-  {
-    name: "John Michael",
-    terminal: 1,
-    sales: 2000,
-    org: "Organization",
-    online: true,
-    date: "23/04/18",
-  },
-  {
-    name: "Alexa Liras",
-    terminal: 2,
-    sales: 8673,
-    org: "Developer",
-    online: false,
-    date: "23/04/18",
-  },
-  {
-    name: "Laurent Perrier",
-    terminal: 3,
-    sales: 9027,
-    org: "Projects",
-    online: false,
-    date: "19/09/17",
-  },
-  {
-    name: "Michael Levi",
-    terminal: 4,
-    sales: 2319,
-    org: "Developer",
-    online: true,
-    date: "24/12/08",
-  },
-  {
-    name: "Richard Gran",
-    terminal: 5,
-    sales: 809,
-    org: "Executive",
-    online: false,
-    date: "04/10/21",
-  },
-];
-  
- 
-export function Table() {
+
+export function Table({ header, data}) {
+  const columns = header || [];
+  const rows = data || [];
+
   return (
     <Card className="h-full w-full">
       {/* <CardHeader floated={false} shadow={false} className="rounded-none">
@@ -127,7 +69,7 @@ export function Table() {
         <table className="w-full min-w-max table-auto text-left">
           <thead>
             <tr>
-              {TABLE_HEAD.map((head, index) => (
+              {columns.map((head, index) => (
                 <th
                   key={head}
                   className="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50"
@@ -138,7 +80,7 @@ export function Table() {
                     className="flex items-center justify-between gap-2 font-normal leading-none opacity-70"
                   >
                     {head}{" "}
-                    {index !== TABLE_HEAD.length - 1 && (
+                    {index !== columns.length - 1 && (
                       <ChevronUpDownIcon strokeWidth={2} className="h-4 w-4" />
                     )}
                   </Typography>
@@ -147,9 +89,9 @@ export function Table() {
             </tr>
           </thead>
           <tbody>
-            {TABLE_ROWS.map(
+            {rows.map(
               ({ name, terminal, sales }, index) => {
-                const isLast = index === TABLE_ROWS.length - 1;
+                const isLast = index === rows.length - 1;
                 const classes = isLast
                   ? "p-4"
                   : "p-4 border-b border-blue-gray-50";

@@ -6,9 +6,58 @@ import { Table } from '../../components/Table'
 import { formatPeso } from '../../lib/format'
 import BarChart from '../../components/BarChart'
 
-const totalSales = 9998.72;
+
 
 const Dashboard = () => {
+
+  const totalSales = 9998.72;
+
+  const TABLE_HEAD = ["Cashier", "Terminal", "Total Sales"];
+  
+  const TABLE_ROWS = [
+    {
+      name: "John Michael",
+      terminal: 1,
+      sales: 2000,
+      org: "Organization",
+      online: true,
+      date: "23/04/18",
+    },
+    {
+      name: "Alexa Liras",
+      terminal: 2,
+      sales: 8673,
+      org: "Developer",
+      online: false,
+      date: "23/04/18",
+    },
+    {
+      name: "Laurent Perrier",
+      terminal: 3,
+      sales: 9027,
+      org: "Projects",
+      online: false,
+      date: "19/09/17",
+    },
+    {
+      name: "Michael Levi",
+      terminal: 4,
+      sales: 2319,
+      org: "Developer",
+      online: true,
+      date: "24/12/08",
+    },
+    {
+      name: "Richard Gran",
+      terminal: 5,
+      sales: 809,
+      org: "Executive",
+      online: false,
+      date: "04/10/21",
+    },
+  ];
+
+
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen">
       <SideNav/>
@@ -88,7 +137,7 @@ const Dashboard = () => {
               </section>
             </div>
             <div className="m-5 mt-0">
-              <Table/>
+              <Table header={TABLE_HEAD} data={TABLE_ROWS}/>
             </div>
           </div>
         </div>
@@ -99,12 +148,12 @@ const Dashboard = () => {
         </div>
         <div className="col-span-5">
           <div className="grid grid-cols-5">
-            <div className="col-span-3">
+            <div className="col-span-2">
               <section className="m-5 mt-0">
-                <Table />
+                <Table header={TABLE_HEAD} data={TABLE_ROWS}/>
               </section>
             </div>
-            <div className="m-5 mt-0 col-span-2">
+            <div className="m-5 mt-0 col-span-3">
               <BarChart/>
             </div>
           </div>
