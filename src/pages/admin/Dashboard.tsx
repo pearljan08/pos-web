@@ -61,7 +61,7 @@ const Dashboard = () => {
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen">
       <SideNav/>
-      <div className="flex flex-col items-end p-5">
+      <div className="flex flex-col items-end p-5 pb-0">
         <div className=''>
           <Select label="Date Filter">
             <Option>Days</Option>
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <div></div>
         <div className='col-span-5'>
           <div className="grid grid-cols-4">
-            <div className="m-10">
+            <div className="m-10 mt-5">
               <Card className='p-3 w-full flex-row'>
                 <CardHeader className='flex flex-row items-center' variant="filled" color="transparent" shadow={false}>
                   <BellIcon className="h-15 w-15"/>
@@ -86,7 +86,7 @@ const Dashboard = () => {
                 </CardBody>
               </Card>
             </div>
-            <div className="m-10">
+            <div className="m-10 mt-5">
               <Card className='p-3 w-full flex-row'>
                 <CardHeader className='flex flex-row items-center' variant="filled" color="transparent" shadow={false}>
                   <ArrowTrendingUpIcon className="h-15 w-15"/>
@@ -98,7 +98,7 @@ const Dashboard = () => {
                 </CardBody>
               </Card>
             </div>
-            <div className="m-10">
+            <div className="m-10 mt-5">
               <Card className='p-3 w-full flex-row'>
                 <CardHeader className='flex flex-row items-center' variant="filled" color="transparent" shadow={false}>
                   <BanknotesIcon className="h-15 w-15"/>
@@ -110,7 +110,7 @@ const Dashboard = () => {
                 </CardBody>
               </Card>
             </div>
-            <div className="m-10">
+            <div className="m-10 mt-5">
               <Card className='p-3 w-full flex-row'>
                 <CardHeader className='flex flex-row items-center' variant="filled" color="transparent" shadow={false}>
                   <ComputerDesktopIcon className="h-15 w-15"/>

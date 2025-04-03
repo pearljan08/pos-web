@@ -3,7 +3,7 @@ import SideNav from "../../components/SideNav"
 import LineChart from "../../components/LineChart"
 import { Table } from "../../components/Table"
 import BarChart from "../../components/BarChart"
-import { BellIcon, CubeTransparentIcon, ArchiveBoxIcon, DocumentArrowUpIcon, DocumentArrowDownIcon } from "@heroicons/react/24/outline"
+import { BellIcon, CubeTransparentIcon, ArchiveBoxIcon, DocumentArrowUpIcon, DocumentArrowDownIcon, RectangleStackIcon } from "@heroicons/react/24/outline"
 import { formatPeso } from "../../lib/format"
 import Modal from "../../components/Modal"
 import { useState } from "react"
@@ -235,7 +235,7 @@ const Inventory = () => {
                     <Modal open={open} handleOpen={handleOpen} dialogBody={modalBody}/>
                   </div>
                   <section className="m-5 mt-0">
-                    <Table header={TABLE_HEAD} data={TABLE_ROWS}/>
+                    <Table header={TABLE_HEAD} data={TABLE_ROWS} title="Product List" titleIcon={<RectangleStackIcon className="w-7 h-7"/>}/>
                   </section>
                 </div>
               </div>
