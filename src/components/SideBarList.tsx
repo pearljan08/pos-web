@@ -27,11 +27,6 @@ const SideBarList = () => {
             icon: <iconSolid.UserGroupIcon />
         },
         {
-            id: 4,
-            title: "Transactions",
-            icon: <iconSolid.ChartPieIcon />
-        },
-        {
             id: 5,
             title: "Reports & Analytics",
             icon: <iconSolid.DocumentChartBarIcon />

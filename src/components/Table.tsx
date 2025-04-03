@@ -22,12 +22,15 @@ import {
 import Terminal from "../pages/pos/Terminal";
 import { formatPeso } from "../lib/format";
 
-export function Table({ header, data}) {
+export function Table({ header, data, title}) {
   const columns = header || [];
   const rows = data || [];
 
   return (
     <Card className="h-full w-full">
+      <CardHeader floated={false} shadow={false} className="rounded-none">
+        {title || ""}
+      </CardHeader>
       <CardBody className="overflow-scroll px-0">
         <table className="w-full min-w-max table-auto text-left">
           <thead>

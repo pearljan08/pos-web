@@ -3,7 +3,7 @@ import SideNav from "../../components/SideNav"
 import LineChart from "../../components/LineChart"
 import { Table } from "../../components/Table"
 import BarChart from "../../components/BarChart"
-import { BellIcon, CubeTransparentIcon, ArchiveBoxIcon } from "@heroicons/react/24/outline"
+import { BellIcon, CubeTransparentIcon, ArchiveBoxIcon, DocumentArrowUpIcon, DocumentArrowDownIcon } from "@heroicons/react/24/outline"
 import { formatPeso } from "../../lib/format"
 import Modal from "../../components/Modal"
 import { useState } from "react"
@@ -228,8 +228,10 @@ const Inventory = () => {
             <div className="col-span-5">
               <div className="grid grid-cols-3">
                 <div className="col-span-3">
-                  <div className="m-5 mt-0 flex justify-end">
+                  <div className="m-5 mt-0 flex justify-end gap-2">
                     <Button onClick={handleOpen}>Add Product</Button>
+                    <Button className="flex flex-row items-center gap-2 bg-teal-500"><DocumentArrowUpIcon className="w-5 h-5"/>Import</Button>
+                    <Button className="flex flex-row items-center gap-2 bg-light-green-500"><DocumentArrowDownIcon className="w-5 h-5"/>Export</Button>
                     <Modal open={open} handleOpen={handleOpen} dialogBody={modalBody}/>
                   </div>
                   <section className="m-5 mt-0">
