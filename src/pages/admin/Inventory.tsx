@@ -1,17 +1,24 @@
-import { Button, Card, CardBody, CardHeader, Input, Select, Textarea, Typography, Option } from "@material-tailwind/react"
+import { Button, Card, CardBody, CardHeader, Input, Select, Textarea, Typography, Option, Dialog, DialogHeader, DialogBody, DialogFooter } from "@material-tailwind/react"
 import SideNav from "../../components/SideNav"
 import LineChart from "../../components/LineChart"
 import { Table } from "../../components/Table"
 import BarChart from "../../components/BarChart"
 import { BellIcon, CubeTransparentIcon, ArchiveBoxIcon, DocumentArrowUpIcon, DocumentArrowDownIcon, RectangleStackIcon } from "@heroicons/react/24/outline"
 import { formatPeso } from "../../lib/format"
-import Modal from "../../components/Modal"
-import { useState } from "react"
+import { useRef, useState } from "react"
+import ModalBody from "../../components/Modal"
 
 const Inventory = () => {
     const [open, setOpen] = useState(false);
  
     const handleOpen = () => setOpen(!open);
+
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+    const handleFileUpload = () => {
+      fileInputRef.current?.click();
+    };
+
 
     const totalSales = 88.72;
     const TABLE_HEAD = ["id", "product", "cost", "price", "stock", "dateAdded", "addedBy"];
@@ -64,120 +71,12 @@ const Inventory = () => {
       },
     ];
 
-    const modalBody = (
-      <>
-        <div>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="mb-2 text-left font-medium"
-          >
-            Name
-          </Typography>
-          <Input
-            color="gray"
-            size="lg"
-            placeholder="eg. White Shoes"
-            name="name"
-            className="placeholder:opacity-100 focus:!border-t-gray-900"
-            containerProps={{
-              className: "!min-w-full",
-            }}
-            labelProps={{
-              className: "hidden",
-            }}
-          />
-        </div>
-        <div>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="mb-2 text-left font-medium"
-          >
-            Category
-          </Typography>
-          <Select
-            className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-800 ring-4 ring-transparent placeholder:text-gray-600 focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary"
-            placeholder="1"
-            labelProps={{
-              className: "hidden",
-            }}
-          >
-            <Option>Clothing</Option>
-            <Option>Fashion</Option>
-            <Option>Watches</Option>
-          </Select>
-        </div>
-        <div className="flex gap-4">
-          <div className="w-full">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 text-left font-medium"
-            >
-              Weight
-            </Typography>
-            <Input
-              color="gray"
-              size="lg"
-              placeholder="eg. <8.8oz | 250g"
-              name="weight"
-              className="placeholder:opacity-100 focus:!border-t-gray-900"
-              containerProps={{
-                className: "!min-w-full",
-              }}
-              labelProps={{
-                className: "hidden",
-              }}
-            />
-          </div>
-          <div className="w-full">
-            <Typography
-              variant="small"
-              color="blue-gray"
-              className="mb-2 text-left font-medium"
-            >
-              Size
-            </Typography>
-            <Input
-              color="gray"
-              size="lg"
-              placeholder="eg. US 8"
-              name="size"
-              className="placeholder:opacity-100 focus:!border-t-gray-900"
-              containerProps={{
-                className: "!min-w-full",
-              }}
-              labelProps={{
-                className: "hidden",
-              }}
-            />
-          </div>
-        </div>
-        <div>
-          <Typography
-            variant="small"
-            color="blue-gray"
-            className="mb-2 text-left font-medium"
-          >
-            Description (Optional)
-          </Typography>
-          <Textarea
-            rows={7}
-            placeholder="eg. This is a white shoe with a comfortable sole."
-            className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-600 ring-4 ring-transparent focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary"
-            labelProps={{
-              className: "hidden",
-            }}
-          />
-        </div>
-      </>
-    );
+
     
     
     return (
         <div className="bg-gray-100 min-w-screen min-h-screen">
-          <SideNav/>
+          {/* <SideNav/> */}
           <div className='grid grid-cols-6'>
             <div></div>
             <div className='col-span-5'>
@@ -232,7 +131,6 @@ const Inventory = () => {
                     <Button onClick={handleOpen}>Add Product</Button>
                     <Button className="flex flex-row items-center gap-2 bg-teal-500"><DocumentArrowUpIcon className="w-5 h-5"/>Import</Button>
                     <Button className="flex flex-row items-center gap-2 bg-light-green-500"><DocumentArrowDownIcon className="w-5 h-5"/>Export</Button>
-                    <Modal open={open} handleOpen={handleOpen} dialogBody={modalBody}/>
                   </div>
                   <section className="m-5 mt-0">
                     <Table header={TABLE_HEAD} data={TABLE_ROWS} title="Product List" titleIcon={<RectangleStackIcon className="w-7 h-7"/>}/>
@@ -258,7 +156,26 @@ const Inventory = () => {
               </div>
             </div>
           </div>
-            
+          <Dialog open={open} handler={handleOpen}>
+            <DialogHeader>Its a simple modal.</DialogHeader>
+            <DialogBody>
+              <ModalBody />
+            </DialogBody>
+            <DialogFooter>
+              <Button
+                variant="text"
+                color="red"
+                onClick={handleOpen}
+                className="mr-1"
+              >
+                <span>Cancel</span>
+              </Button>
+              <Button variant="gradient" color="green" onClick={handleOpen}>
+                <span>Confirm</span>
+              </Button>
+              
+            </DialogFooter>
+          </Dialog>
         </div>
       )
 }

@@ -1,30 +1,116 @@
-import { Button, Dialog, DialogBody, DialogFooter, DialogHeader } from "@material-tailwind/react"
+import { Input, Select, Typography, Option, Textarea } from "@material-tailwind/react"
 
-const Modal = ({open, handleOpen, dialogBody, dialogFooter}) => {
+
+const ModalBody = () => {
   return (
     <>
-      <Dialog open={open} handler={handleOpen}>
-        <DialogHeader>Its a simple modal.</DialogHeader>
-        <DialogBody>
-          {dialogBody || "No content provided."}
-        </DialogBody>
-        <DialogFooter>
-          <Button
-            variant="text"
-            color="red"
-            onClick={handleOpen}
-            className="mr-1"
+        <div>
+          <Typography
+            variant="small"
+            color="blue-gray"
+            className="mb-2 text-left font-medium"
           >
-            <span>Cancel</span>
-          </Button>
-          {dialogFooter || (<Button variant="gradient" color="green" onClick={handleOpen}>
-            <span>Confirm</span>
-          </Button>)}
-          
-        </DialogFooter>
-      </Dialog>
-    </>
+            Name
+          </Typography>
+          <Input
+            color="gray"
+            size="lg"
+            placeholder="eg. White Shoes"
+            name="name"
+            className="placeholder:opacity-100 focus:!border-t-gray-900"
+            containerProps={{
+              className: "!min-w-full",
+            }}
+            labelProps={{
+              className: "hidden",
+            }}
+          />
+        </div>
+        <div>
+          <Typography
+            variant="small"
+            color="blue-gray"
+            className="mb-2 text-left font-medium"
+          >
+            Category
+          </Typography>
+          <Select
+            className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-800 ring-4 ring-transparent placeholder:text-gray-600 focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary"
+            placeholder="1"
+            labelProps={{
+              className: "hidden",
+            }}
+          >
+            <Option>Clothing</Option>
+            <Option>Fashion</Option>
+            <Option>Watches</Option>
+          </Select>
+        </div>
+        <div className="flex gap-4">
+          <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 text-left font-medium"
+            >
+              Weight
+            </Typography>
+            <Input
+              color="gray"
+              size="lg"
+              placeholder="eg. <8.8oz | 250g"
+              name="weight"
+              className="placeholder:opacity-100 focus:!border-t-gray-900"
+              containerProps={{
+                className: "!min-w-full",
+              }}
+              labelProps={{
+                className: "hidden",
+              }}
+            />
+          </div>
+          <div className="w-full">
+            <Typography
+              variant="small"
+              color="blue-gray"
+              className="mb-2 text-left font-medium"
+            >
+              Size
+            </Typography>
+            <Input
+              color="gray"
+              size="lg"
+              placeholder="eg. US 8"
+              name="size"
+              className="placeholder:opacity-100 focus:!border-t-gray-900"
+              containerProps={{
+                className: "!min-w-full",
+              }}
+              labelProps={{
+                className: "hidden",
+              }}
+            />
+          </div>
+        </div>
+        <div>
+          <Typography
+            variant="small"
+            color="blue-gray"
+            className="mb-2 text-left font-medium"
+          >
+            Description (Optional)
+          </Typography>
+          <Textarea
+            rows={7}
+            placeholder="eg. This is a white shoe with a comfortable sole."
+            className="!w-full !border-[1.5px] !border-blue-gray-200/90 !border-t-blue-gray-200/90 bg-white text-gray-600 ring-4 ring-transparent focus:!border-primary focus:!border-t-blue-gray-900 group-hover:!border-primary"
+            labelProps={{
+              className: "hidden",
+            }}
+          />
+        </div>
+      </>
   )
 }
 
-export default Modal
+export default ModalBody

@@ -60,7 +60,7 @@ const Dashboard = () => {
 
   return (
     <div className="bg-gray-100 min-w-screen min-h-screen">
-      <SideNav/>
+      {/* <SideNav/> */}
       <div className="flex flex-col items-end p-5 pb-0">
         <div className=''>
           <Select label="Date Filter">

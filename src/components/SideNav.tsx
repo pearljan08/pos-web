@@ -7,12 +7,14 @@ import {
   } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import SideBarList from "./SideBarList";
+import { Outlet } from "react-router-dom";
 
 const SideNav = () => {
     const [open, setOpen] = useState(0);
     const [openAlert, setOpenAlert] = useState(true);
 
     return (
+        <>
         <div className="dark: bg-blue-gray-800 fixed z-10">
             <Card className="min-h-screen w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 rounded-none bg-gray-100 dark:bg-gray-800">
                 <div className="mb-2 flex items-center gap-4 p-4">
@@ -27,6 +29,8 @@ const SideNav = () => {
                 <SideBarList />
             </Card>
         </div>
+        <Outlet />
+        </>
     );
 }
 
