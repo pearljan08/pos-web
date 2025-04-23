@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react"
 import * as iconSolid from "@heroicons/react/24/solid"
 import * as iconOutline from "@heroicons/react/24/outline"
+import { NavLink } from "react-router-dom";
 
 const SideBarList = () => {
 
@@ -14,22 +15,26 @@ const SideBarList = () => {
         {
             id: 1,
             title: "Dashboard",
-            icon: <iconSolid.PresentationChartBarIcon />
+            icon: <iconSolid.PresentationChartBarIcon />,
+            link: "/admin/"
         },
         {
             id: 2,
             title: "Inventory",
-            icon: <iconSolid.ArchiveBoxIcon />
+            icon: <iconSolid.ArchiveBoxIcon />,
+            link: "/admin/inventory"
         },
         {
             id: 3,
             title: "Users",
-            icon: <iconSolid.UserGroupIcon />
+            icon: <iconSolid.UserGroupIcon />,
+            link: "/admin/users"
         },
         {
             id: 5,
             title: "Reports & Analytics",
-            icon: <iconSolid.DocumentChartBarIcon />
+            icon: <iconSolid.DocumentChartBarIcon />,
+            link: "/admin/reports"
         }
     ];
 
@@ -42,7 +47,7 @@ const SideBarList = () => {
                         <ListItemPrefix className="h-5 w-5">
                             {menu.icon}
                         </ListItemPrefix>
-                        {menu.title}                        
+                        <NavLink to={menu.link} end>{menu.title}</NavLink>
                     </ListItem>
                 ))
             }

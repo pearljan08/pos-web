@@ -77,6 +77,10 @@ const Inventory = () => {
     return (
         <div className="bg-gray-100 min-w-screen min-h-screen">
           {/* <SideNav/> */}
+          <div className="flex flex-col items-end p-5 pb-1">
+            <h1 className="text-2xl font-bold">Inventory</h1>
+            <p className="text-gray-500">Manage your inventory here</p>
+          </div>
           <div className='grid grid-cols-6'>
             <div></div>
             <div className='col-span-5'>
